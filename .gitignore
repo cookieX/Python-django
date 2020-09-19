@@ -1,0 +1,12 @@
+*.swp
+*.swo
+*~
+*.pyc
+*#
+.#*
+db.sqlite3
+/var
+/Hack/localsettings.py
+
+# Project exclude paths
+/venv/
