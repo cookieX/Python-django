@@ -9,7 +9,7 @@ from import_export.admin import ImportExportModelAdmin
 class DocumentAdmin(admin.ModelAdmin):
     list_display: ["id", "deleted_at", "create_by"]
     search_fields: ["text"]
-    readonly_fields = ["create_by", "timestamp"]
+    readonly_fields = ["timestamp"]
 
 
 admin.site.register(models.Documents, DocumentAdmin)

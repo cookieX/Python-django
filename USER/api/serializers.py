@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.contrib.auth.tokens import default_token_generator

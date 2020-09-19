@@ -48,6 +48,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/confirm/<key>/", USER.views.confirm, name = "users_confirm"),
     path("api/1/user/", include("USER.api.urls")),
+    path("api/1/legal/", include("Legal.api.urls")),
     path("users/password-reset/", csrf_exempt(USER.views.PasswordReset.as_view())),
     path("api/1/oauth/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     url(

@@ -15,5 +15,3 @@ class Documents(models.Model):
     file = models.FileField(null=True, blank=True, upload_to="File/Legal/")
     text = models.TextField(blank=True)
 
-    def save(self, *args, **kwargs):
-        self.create_by = self.request.user

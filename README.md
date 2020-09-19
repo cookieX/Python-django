@@ -15,3 +15,7 @@
 - User Profile View : https://hackzurich2020.herokuapp.com/api/1/user/{usernameofuser}/
 
 - Forget password : https://hackzurich2020.herokuapp.com/users/password-reset/ **Once user will use their email id for forget password they will receive link to forget password on his/her email .**
+
+- Legal Documents : https://hackzurich2020.herokuapp.com/api/1/legal/document/
+
+- Legal Documents Each ID: https://hackzurich2020.herokuapp.com/api/1/legal/document/{id}/
