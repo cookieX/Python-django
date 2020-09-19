@@ -4,7 +4,7 @@
 
 ### Small documents about API description.
 
-- Login API : https://hackzurich2020.herokuapp.com/api/1/oauth/token/ **Need to provide data for most method like data: `grant_type=password&username=${this.state.username}&password=${this.state.password}&client_id=${CLIENT_ID}`**
+- Login API : https://hackzurich2020.herokuapp.com/api/1/oauth/token/ **Need to provide data for POST method like data: `grant_type=password&username=${username}&password=${password}&client_id=${CLIENT_ID}`**
 
 - Registration API: https://hackzurich2020.herokuapp.com/api/1/user/register/ **Once User will register they will get an confirmation email on register email id .**
 
