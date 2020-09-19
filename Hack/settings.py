@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "USER",
+    "Legal",
     "cloudinary",
     "rest_framework",
     "drf_yasg",
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "import_export",
     "django_rest_passwordreset",
     "taggit",
+    
 ]
 
 MIDDLEWARE = [
@@ -182,9 +184,6 @@ OAUTH2_PROVIDER = {
     "CLIENT_ID_GENERATOR_CLASS": "oauth2_provider.generators.ClientIdGenerator",
     "ACCESS_TOKEN_EXPIRE_SECONDS": ACCESS_TOKEN_EXPIRE_SECONDS,
 }
-
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
 

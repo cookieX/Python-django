@@ -1,10 +1,8 @@
 from rest_framework import serializers
-from Post.models import Post, Comment
-from blog.models import Blog
+
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.contrib.auth.tokens import default_token_generator
-from blog.api.serializers import BlogSerializer
 from django.contrib.auth.password_validation import validate_password
 
 User = get_user_model()
@@ -85,10 +83,9 @@ class ProfileInfoSerializer(serializers.ModelSerializer):
         return user
 
 
-
-
 class UserProfileSerializer(serializers.ModelSerializer):
     """Serializer for viewing a user posts"""
+
     followed_by_req_user = serializers.SerializerMethodField()
 
     class Meta:
@@ -103,7 +100,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "bio",
             "profile_pic",
             "followed_by_req_user",
-        
         )
 
     def get_followed_by_req_user(self, obj):
@@ -120,7 +116,6 @@ class FollowSerializer(serializers.ModelSerializer):
 
 
 class AllUserListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = get_user_model()
         fields = "__all__"

@@ -12,7 +12,6 @@ from .serializers import (
     UserProfileSerializer,
     FollowSerializer,
     AllUserListSerializer,
-    
     ChangePasswordSerializer,
 )
 import django_filters.filters
@@ -93,10 +92,7 @@ class UserSignUpView(generics.CreateAPIView):
 
     def get(self, request):
         return Response(
-            {
-                "minPasswordChars": 8,
-                "help_text": "RET-ZURICHTEAM register API",
-            }
+            {"minPasswordChars": 8, "help_text": "RET-ZURICHTEAM register API",}
         )
 
     def post(self, request, *args, **kwargs):
@@ -108,7 +104,7 @@ class UserSignUpView(generics.CreateAPIView):
                 {"detail": "All The Fields Are Required"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-       else:
+        else:
             serializer = UserSignUpSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
@@ -137,7 +133,6 @@ class UserProfileView(generics.RetrieveAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = (permissions.AllowAny,)
-
 
 
 class FollowUserView(APIView):
