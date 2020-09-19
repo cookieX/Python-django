@@ -16,7 +16,7 @@ SECRET_KEY = "_h)na+xqf)2&w)91%$50$bv5m#^$4z*xo!sk!9cn7erfm99^o0"
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*","https://hackzurich2020.herokuapp.com/"]
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
@@ -186,11 +186,6 @@ OAUTH2_PROVIDER = {
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
 
 DJANGO_REST_PASSWORDRESET_IP_ADDRESS_HEADER = "HTTP_X_FORWARDED_FOR"
