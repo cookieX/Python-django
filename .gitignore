@@ -6,8 +6,6 @@
 .#*
 db.sqlite3
 /var
-/Legal/api/Continent.py
-/Legal/api/Country.py
 
 
 # Project exclude paths
