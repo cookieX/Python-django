@@ -74,8 +74,7 @@ class LegalDocuments(serializers.ModelSerializer):
         else:
             data = multisub(listt, obj.text )
             if data:
-                # for r in (("Warszaw", "Poland"), ("New York", "United State"),('Copenhagen', "Denmark")):
-                return data.replace("Warszaw", "Poland").replace("New York", "United State").replace('Copenhagen', "Denmark")
+                return data.replace("Warszaw", "Poland").replace("New York", "United State").replace('Copenhagen', "Denmark").replace('cabin', "home")
             else:
                 return data
             
