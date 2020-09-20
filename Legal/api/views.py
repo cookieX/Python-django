@@ -14,6 +14,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 from django.db.models import Q, Case, Value, When
 from django_filters.rest_framework import BaseInFilter, NumberFilter
+from .Country import COUNTRY
 
 
 class Documents(ListCreateAPIView):
@@ -50,3 +51,8 @@ class DocumentsView(RetrieveUpdateDestroyAPIView):
     def delete(self, request):
         self.filter_queryset(self.get_queryset()).update(deleted_at=now())
         return Response({"Deleted Successfully"})
+
+
+class Country(APIView):
+    def get(self, request):
+        return Response({'some':COUNTRY })
