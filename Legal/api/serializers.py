@@ -9,6 +9,8 @@ import pandas as pd
 from ..utils import GetConti , multisub,text_file
 import pandas as pd
 import re
+from Legal.api.Country import COUNTRY
+from Legal.api.Continent import COUNTRY1
 
 
 
@@ -19,10 +21,13 @@ class LegalDocuments(serializers.ModelSerializer):
     # )
     file_text = serializers.SerializerMethodField()
     fileter_text = serializers.SerializerMethodField()
+   
 
     class Meta:
         model = models.Documents
         exclude = ["deleted_at", "timestamp","file"]
+
+
 
     # def get_file(self, obj):
     #     if obj.file:
@@ -37,6 +42,7 @@ class LegalDocuments(serializers.ModelSerializer):
         if obj.file:
             return text_file(obj.file)
 
+        
 
     def get_fileter_text(self, obj):
         listt =[]
@@ -51,7 +57,25 @@ class LegalDocuments(serializers.ModelSerializer):
                 #count.append(country.name)
                 # print(text.replace(country.name, df) for n in text)
                 #print(df)
+        # if not listt:
+        #     return obj.text
+        # else:
+        #     text2 = multisub(listt, obj.text )
+        #     list1 =[]
+        #     for citis in pycountry.subdivisions:
+        #         if citis.name in text2:
+        #             for count in  COUNTRY[COUNTRY1]:
+        #                 if citis.name in count:
+        #                     list1.append((citis.name,count))
+        #                  else: 
+        #                     pass
         if not listt:
             return obj.text
         else:
-            return multisub(listt, obj.text )
+            data = multisub(listt, obj.text )
+            if data:
+                # for r in (("Warszaw", "Poland"), ("New York", "United State"),('Copenhagen', "Denmark")):
+                return data.replace("Warszaw", "Poland").replace("New York", "United State").replace('Copenhagen', "Denmark")
+            else:
+                return data
+            
