@@ -14,15 +14,15 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 from django.db.models import Q, Case, Value, When
 from django_filters.rest_framework import BaseInFilter, NumberFilter
-from .Country import COUNTRY
+
 
 
 class Documents(ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = serializers.LegalDocuments
 
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(created_by=self.request.user)
 
     def get_queryset(self):
         return models.Documents.objects.filter(
@@ -55,4 +55,4 @@ class DocumentsView(RetrieveUpdateDestroyAPIView):
 
 class Country(APIView):
     def get(self, request):
-        return Response({'some':COUNTRY })
+        return Response({'some':  "vvv"})

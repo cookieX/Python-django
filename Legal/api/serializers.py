@@ -22,15 +22,15 @@ class LegalDocuments(serializers.ModelSerializer):
 
     class Meta:
         model = models.Documents
-        exclude = ["deleted_at", "timestamp", "create_by","file"]
+        exclude = ["deleted_at", "timestamp","file"]
 
     # def get_file(self, obj):
     #     if obj.file:
     #         return self.context["request"].build_absolute_uri(obj.file.url)
 
-    def create(self, validated_data):
-        validated_data["created_by"] = self.context["request"].user
-        return super().create(validated_data)
+    # def create(self, validated_data):
+    #     validated_data["created_by"] = self.context["request"].user
+    #     return super().create(validated_data)
     
     # Get File context as text.
     def get_file_text(self, obj):
@@ -41,7 +41,7 @@ class LegalDocuments(serializers.ModelSerializer):
     def get_fileter_text(self, obj):
         listt =[]
         for country in pycountry.countries:
-            if country.name in obj.text :
+            if country.name in obj.text:
                 #print(country.name)
                 #country = {"Country": [country.name]}
                 df = GetConti(country.name)
@@ -51,4 +51,7 @@ class LegalDocuments(serializers.ModelSerializer):
                 #count.append(country.name)
                 # print(text.replace(country.name, df) for n in text)
                 #print(df)
-        return multisub(listt, obj.text )
+        if not listt:
+            return obj.text
+        else:
+            return multisub(listt, obj.text )
