@@ -14,19 +14,19 @@ import re
 
 class LegalDocuments(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
-    file = serializers.FileField(
-        max_length=None, use_url=True, allow_null=True, allow_empty_file=True,
-    )
+    # file = serializers.FileField(
+    #     max_length=None, use_url=True, allow_null=True, allow_empty_file=True,
+    # )
     file_text = serializers.SerializerMethodField()
     fileter_text = serializers.SerializerMethodField()
 
     class Meta:
         model = models.Documents
-        exclude = ["deleted_at", "timestamp", "create_by"]
+        exclude = ["deleted_at", "timestamp", "create_by","file"]
 
-    def get_file(self, obj):
-        if obj.file:
-            return self.context["request"].build_absolute_uri(obj.file.url)
+    # def get_file(self, obj):
+    #     if obj.file:
+    #         return self.context["request"].build_absolute_uri(obj.file.url)
 
     def create(self, validated_data):
         validated_data["created_by"] = self.context["request"].user
